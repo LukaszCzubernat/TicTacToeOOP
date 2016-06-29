@@ -2,14 +2,12 @@ package model;
 
 import model.board.Board;
 import model.field.Field;
-import model.field.Sign;
-import org.junit.internal.requests.FilterRequest;
-import org.testng.Assert;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 
 import static model.field.Sign.O;
 import static model.field.Sign.X;
+import static org.junit.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 /**
@@ -55,9 +53,9 @@ public class BoardTest {
         Field centerXField = new Field(4, X);
 
         // when - then
-        Assert.assertFalse(board.placeSign(firstXField));
-        Assert.assertFalse(board.placeSign(secondOField));
-        Assert.assertFalse(board.placeSign(thirdXField));
-        Assert.assertFalse(board.placeSign(centerXField));
+        assertFalse(board.placeSign(firstXField));
+        assertFalse(board.placeSign(secondOField));
+        assertFalse(board.placeSign(thirdXField));
+        assertFalse(board.placeSign(centerXField));
     }
 }
