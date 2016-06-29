@@ -23,7 +23,7 @@ public class BoardTest {
     public void placeSignOInCenterOfBoard(){
         // given
         Field field = new Field(1, Sign.O);
-        // when - than
+        // when - then
         Assert.assertTrue(board.placeSign(field));
     }
 }
