@@ -16,8 +16,9 @@ public class BoardBuilderTest {
         // given
         BoardBuilder boardBuilder = new BoardBuilder(9);
         Board board = new Board(new Field[9]);
+
         // when - then
         Assert.assertNotSame(boardBuilder.createEmptyBoard(), board);
-
+        Assert.assertEquals(boardBuilder.createEmptyBoard().getClass(), Board.class);
     }
 }
