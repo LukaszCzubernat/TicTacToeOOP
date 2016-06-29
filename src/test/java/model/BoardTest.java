@@ -8,6 +8,10 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 
+import static model.field.Sign.O;
+import static model.field.Sign.X;
+import static org.testng.Assert.assertTrue;
+
 /**
  * Created by Hawk on 28.06.16.
  */
@@ -23,26 +27,37 @@ public class BoardTest {
     @Test(groups = "board")
     public void placeSignOInCenterOfBoard(){
         // given
-        Field field = new Field(4, Sign.O);
+        Field centralOField = new Field(4, O);
 
         // when - then
-        Assert.assertTrue(board.placeSign(field));
+        assertTrue(board.placeSign(centralOField));
     }
 
-    @Test
-    public void placeThreeSignsOnBoard(){
+    @Test(groups = "board", dependsOnMethods = {"placeSignOInCenterOfBoard"})
+    public void placeXOXOnBoardHappyPath(){
         // given
-        Field firstField = new Field(0, Sign.X);
-        Field secondField = new Field(1, Sign.O);
-        Field thirdField = new Field(2, Sign.X);
-        Field centerField = new Field(4, Sign.X);
+        Field firstXField = new Field(0, X);
+        Field secondOField = new Field(1, O);
+        Field thirdXField = new Field(2, X);
 
         // when - then
-        Assert.assertTrue(board.placeSign(firstField));
-        Assert.assertTrue(board.placeSign(secondField));
-        Assert.assertTrue(board.placeSign(thirdField));
+        assertTrue(board.placeSign(firstXField));
+        assertTrue(board.placeSign(secondOField));
+        assertTrue(board.placeSign(thirdXField));
+    }
 
-        Assert.assertFalse(board.placeSign(firstField));
-        Assert.assertFalse(board.placeSign(centerField));
+    @Test(groups = "board", dependsOnMethods = {"placeXOXOnBoardHappyPath"})
+    public void placeXOXOnBoardErrorPath(){
+        // given
+        Field firstXField = new Field(0, X);
+        Field secondOField = new Field(1, O);
+        Field thirdXField = new Field(2, X);
+        Field centerXField = new Field(4, X);
+
+        // when - then
+        Assert.assertFalse(board.placeSign(firstXField));
+        Assert.assertFalse(board.placeSign(secondOField));
+        Assert.assertFalse(board.placeSign(thirdXField));
+        Assert.assertFalse(board.placeSign(centerXField));
     }
 }
