@@ -1,6 +1,7 @@
 package controler;
 
 import controler.arbiter.Arbiter;
+import model.board.Board;
 import model.field.Field;
 import model.field.Sign;
 import org.testng.annotations.BeforeGroups;
@@ -17,10 +18,17 @@ import static org.junit.Assert.assertTrue;
 public class ArbiterTest {
 
     private Arbiter arbiter;
+    private Board board;
 
     @BeforeGroups(groups = {"arbiter"})
     public void init() {
-        arbiter = new Arbiter();
+        board = new Board(new Field[9]);
+        board.placeSign(new Field(0, O));
+        board.placeSign(new Field(4, O));
+        board.placeSign(new Field(8, O));
+        board.placeSign(new Field(1, X));
+
+        arbiter = new Arbiter(board);
     }
 
     @Test(groups = "arbiter")
@@ -28,7 +36,10 @@ public class ArbiterTest {
         // given
         Field field = new Field(8, O);
 
-        // when - then
+        // when
+        board.placeSign(field);
+
+        // then
         assertTrue(arbiter.wasThisMoveVictorious(field));
     }
 

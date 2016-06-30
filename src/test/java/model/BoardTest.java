@@ -32,7 +32,7 @@ public class BoardTest {
     }
 
     @Test(groups = "board", dependsOnMethods = {"placeSignOInCenterOfBoard"})
-    public void placeXOXOnBoardHappyPath(){
+    public void placeXOXOnBoard(){
         // given
         Field firstXField = new Field(0, X);
         Field secondOField = new Field(1, O);
@@ -45,12 +45,12 @@ public class BoardTest {
     }
 
     @Test(groups = "board", dependsOnMethods = {"placeXOXOnBoardHappyPath"})
-    public void placeXOXOnBoardErrorPath(){
+    public void placeXOXOOnOccupiedFieldsOnBoard(){
         // given
         Field firstXField = new Field(0, X);
         Field secondOField = new Field(1, O);
         Field thirdXField = new Field(2, X);
-        Field centerXField = new Field(4, X);
+        Field centerXField = new Field(4, O);
 
         // when - then
         assertFalse(board.placeSign(firstXField));
