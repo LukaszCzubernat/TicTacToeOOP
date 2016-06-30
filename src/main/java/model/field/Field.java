@@ -15,4 +15,8 @@ public class Field {
     public Integer showIndex() {
         return index;
     }
+
+    public Sign showSign() {
+        return sign;
+    }
 }

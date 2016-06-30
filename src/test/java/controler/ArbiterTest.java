@@ -28,7 +28,7 @@ public class ArbiterTest {
         board.placeSign(new Field(8, O));
         board.placeSign(new Field(1, X));
 
-        arbiter = new Arbiter(board);
+        arbiter = new Arbiter();
     }
 
     @Test(groups = "arbiter")
@@ -40,7 +40,7 @@ public class ArbiterTest {
         board.placeSign(field);
 
         // then
-        assertTrue(arbiter.wasThisMoveVictorious(field));
+        assertTrue(arbiter.wasThisMoveVictorious(board));
     }
 
     @Test(groups = "arbiter", dependsOnMethods = {"wasThisMoveVictorious"})
