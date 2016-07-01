@@ -1,12 +1,13 @@
-package controler.arbiter;
+package controler.arbiter.impl;
 
+import controler.arbiter.GameArbiter;
 import model.board.impl.Board;
 import model.field.Sign;
 
 /**
  * Created by lucz on 29.06.16.
  */
-public class Arbiter {
+public class Arbiter implements GameArbiter {
 
     private ArbiterDecisionEngine arbiterDecisionEngine;
 

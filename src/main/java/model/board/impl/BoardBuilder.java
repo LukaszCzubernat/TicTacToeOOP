@@ -15,6 +15,6 @@ public class BoardBuilder implements GameBoardBuilder {
     }
 
     public GameBoard createEmptyBoard() {
-        return new Board(new Field[9]);
+        return new Board(new Field[dimension]);
     }
 }

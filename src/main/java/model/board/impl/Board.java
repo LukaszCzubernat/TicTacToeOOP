@@ -8,6 +8,7 @@ import util.Sequence;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -21,18 +22,18 @@ public class Board implements GameBoard {
     }
 
     @Override
-    public Boolean placeSign(GameField field) {
-        if (Objects.isNull(fields[field.showIndex()])) {
-            fields[field.showIndex()] = (Field) field;
-            return Boolean.TRUE;
-        }
-        return Boolean.FALSE;
+    public void fillFieldOnBoard(GameField field) {
+        fields[field.showIndex()] = (Field) field;
     }
 
     @Override
-    public List<Sign> getValuesForSequence(Sequence sequence) {
-        return sequence.showSequenceValues().stream().filter(index -> Objects.nonNull(fields[index])).
-                map(index -> fields[index].showSign()).collect(Collectors.toList());
+    public Field getFieldForIndex(Integer index){
+        return fields[index];
+    }
+
+    @Override
+    public Sign getSignOfFieldForIndex(Integer index){
+        return Optional.ofNullable(fields[index]).map(Field::showSign).orElse(null);
     }
 
     @Override

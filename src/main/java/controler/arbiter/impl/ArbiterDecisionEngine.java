@@ -1,4 +1,4 @@
-package controler.arbiter;
+package controler.arbiter.impl;
 
 import model.board.impl.Board;
 import model.field.Sign;
@@ -24,20 +24,20 @@ public class ArbiterDecisionEngine {
     }
 
     public Boolean isBoardContainsWinningSequence(Board board) {
-        Iterator<Sequence> sequenceIterator = possibleWinningSequences.iterator();
-        while (sequenceIterator.hasNext()) {
-            if (isWinningSequence(board.getValuesForSequence(sequenceIterator.next()))){
-                return Boolean.TRUE;
-            }
-        }
+//        Iterator<Sequence> sequenceIterator = possibleWinningSequences.iterator();
+//        while (sequenceIterator.hasNext()) {
+//            if (isWinningSequence(board.getValuesForSequence(sequenceIterator.next()))){
+//                return Boolean.TRUE;
+//            }
+//        }
         return Boolean.FALSE;
     }
 
     public void updateWinningSequences(Board board) {
-        Iterator<Sequence> sequenceIterator = possibleWinningSequences.iterator();
-        while (sequenceIterator.hasNext()) {
-            updatePossibleWinningSequences(board.getValuesForSequence(sequenceIterator.next()), sequenceIterator);
-        }
+//        Iterator<Sequence> sequenceIterator = possibleWinningSequences.iterator();
+//        while (sequenceIterator.hasNext()) {
+//            updatePossibleWinningSequences(board.getValuesForSequence(sequenceIterator.next()), sequenceIterator);
+//        }
     }
 
     private boolean isWinningSequence(List<Sign> signs) {
