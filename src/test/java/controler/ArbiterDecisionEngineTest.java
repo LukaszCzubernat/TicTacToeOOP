@@ -1,7 +1,7 @@
 package controler;
 
-import controler.arbiter.ArbiterHelper;
-import model.board.Board;
+import controler.arbiter.ArbiterDecisionEngine;
+import model.board.impl.Board;
 import model.field.Field;
 import org.apache.commons.collections.SetUtils;
 import org.testng.annotations.BeforeGroups;
@@ -18,7 +18,7 @@ import static org.testng.Assert.assertTrue;
 /**
  * Created by lucz on 30.06.16.
  */
-public class ArbiterHelperTest {
+public class ArbiterDecisionEngineTest {
 
     private Set<Sequence> expectedWinningSequences;
     private Board board;
@@ -41,13 +41,13 @@ public class ArbiterHelperTest {
     @Test(groups = "arbiterHelperUpdateSequences")
     public void updateWinningSequences(){
         // given
-        ArbiterHelper arbiterHelper = new ArbiterHelper();
+        ArbiterDecisionEngine arbiterDecisionEngine = new ArbiterDecisionEngine();
 
         // when
-        arbiterHelper.updateWinningSequences(board);
+        arbiterDecisionEngine.updateWinningSequences(board);
 
         // then
-        assertTrue(SetUtils.isEqualSet(arbiterHelper.getPossibleWinningSequences(), expectedWinningSequences));
+        assertTrue(SetUtils.isEqualSet(arbiterDecisionEngine.getPossibleWinningSequences(), expectedWinningSequences));
     }
 
     @BeforeGroups(groups = { "arbiterHelperWinningSequence" })
@@ -69,10 +69,10 @@ public class ArbiterHelperTest {
     @Test(groups = "arbiterHelperWinningSequence")
     public void isBoardContainsWinningSequence(){
         // given
-        ArbiterHelper arbiterHelper = new ArbiterHelper();
+        ArbiterDecisionEngine arbiterDecisionEngine = new ArbiterDecisionEngine();
 
         // when - then
-        assertTrue(arbiterHelper.isBoardContainsWinningSequence(board));
+        assertTrue(arbiterDecisionEngine.isBoardContainsWinningSequence(board));
     }
 
 }

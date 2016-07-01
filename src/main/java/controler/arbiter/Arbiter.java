@@ -1,6 +1,6 @@
 package controler.arbiter;
 
-import model.board.Board;
+import model.board.impl.Board;
 import model.field.Sign;
 
 /**
@@ -8,14 +8,14 @@ import model.field.Sign;
  */
 public class Arbiter {
 
-    private ArbiterHelper arbiterHelper;
+    private ArbiterDecisionEngine arbiterDecisionEngine;
 
     public Arbiter() {
-        this.arbiterHelper = new ArbiterHelper();
+        this.arbiterDecisionEngine = new ArbiterDecisionEngine();
     }
 
     public Boolean wasThisMoveVictorious(Board board) {
-        return arbiterHelper.isBoardContainsWinningSequence(board);
+        return arbiterDecisionEngine.isBoardContainsWinningSequence(board);
     }
 
     public String announceWinner(String playerName, Sign sign) {

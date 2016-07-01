@@ -1,7 +1,7 @@
 package controler;
 
 import controler.arbiter.Arbiter;
-import model.board.Board;
+import model.board.impl.Board;
 import model.field.Field;
 import model.field.Sign;
 import org.testng.annotations.BeforeGroups;

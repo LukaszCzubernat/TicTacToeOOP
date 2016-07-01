@@ -1,12 +1,11 @@
 package model;
 
-import model.board.Board;
+import model.board.impl.Board;
 import model.field.Field;
 import model.field.Sign;
 import org.apache.commons.collections.ListUtils;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
-import org.testng.collections.CollectionUtils;
 import util.Sequence;
 
 import java.util.Arrays;

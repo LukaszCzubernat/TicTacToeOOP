@@ -1,7 +1,7 @@
 package model;
 
-import model.board.Board;
-import model.board.BoardBuilder;
+import model.board.impl.Board;
+import model.board.impl.BoardBuilder;
 import model.field.Field;
 import org.testng.Assert;
 import org.testng.annotations.Test;

@@ -1,18 +1,20 @@
-package model.board;
+package model.board.impl;
 
+import model.board.GameBoard;
+import model.board.GameBoardBuilder;
 import model.field.Field;
 
 /**
  * Created by lucz on 29.06.16.
  */
-public class BoardBuilder {
+public class BoardBuilder implements GameBoardBuilder {
     private Integer dimension;
 
     public BoardBuilder(Integer dimension) {
         this.dimension = dimension;
     }
 
-    public Board createEmptyBoard() {
+    public GameBoard createEmptyBoard() {
         return new Board(new Field[9]);
     }
 }

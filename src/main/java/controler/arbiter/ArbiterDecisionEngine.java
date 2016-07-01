@@ -1,6 +1,6 @@
 package controler.arbiter;
 
-import model.board.Board;
+import model.board.impl.Board;
 import model.field.Sign;
 import util.Sequence;
 import util.SequenceInitializer;
@@ -13,20 +13,22 @@ import java.util.Set;
 /**
  * Created by lucz on 30.06.16.
  */
-public class ArbiterHelper {
+public class ArbiterDecisionEngine {
 
     private Set<Sequence> possibleWinningSequences;
+    private Sequence winnerSequence;
+    private Sign winnerSign;
 
-    public ArbiterHelper() {
+    public ArbiterDecisionEngine() {
         this.possibleWinningSequences = SequenceInitializer.getAllWinningSequences();
     }
 
     public Boolean isBoardContainsWinningSequence(Board board) {
         Iterator<Sequence> sequenceIterator = possibleWinningSequences.iterator();
         while (sequenceIterator.hasNext()) {
-            List<Sign> signs = board.getValuesForSequence(sequenceIterator.next());
-            if (isWinningSequence(signs))
+            if (isWinningSequence(board.getValuesForSequence(sequenceIterator.next()))){
                 return Boolean.TRUE;
+            }
         }
         return Boolean.FALSE;
     }
@@ -34,8 +36,7 @@ public class ArbiterHelper {
     public void updateWinningSequences(Board board) {
         Iterator<Sequence> sequenceIterator = possibleWinningSequences.iterator();
         while (sequenceIterator.hasNext()) {
-            List<Sign> signs = board.getValuesForSequence(sequenceIterator.next());
-            updatePossibleWinningSequences(signs, sequenceIterator);
+            updatePossibleWinningSequences(board.getValuesForSequence(sequenceIterator.next()), sequenceIterator);
         }
     }
 
