@@ -40,10 +40,12 @@ public class ArbiterHelper {
     }
 
     private boolean isWinningSequence(List<Sign> signs) {
-        if (signs.size() == 3 && !signs.contains(Sign.X))
+        if (signs.size() == 3 && !signs.contains(Sign.X)) {
             return signs.stream().filter(sign -> Objects.nonNull(sign)).filter(sign -> sign.equals(Sign.O)).count() == 3;
-        if (signs.size() == 3 && !signs.contains(Sign.O))
+        }
+        if (signs.size() == 3 && !signs.contains(Sign.O)) {
             return signs.stream().filter(sign -> Objects.nonNull(sign)).filter(sign -> sign.equals(Sign.X)).count() == 3;
+        }
         return false;
     }
 
