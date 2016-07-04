@@ -1,7 +1,7 @@
 package controler.arbiter.impl;
 
 import controler.arbiter.GameArbiter;
-import model.board.impl.Board;
+import controler.board.BoardController;
 import model.field.Sign;
 
 /**
@@ -15,8 +15,8 @@ public class Arbiter implements GameArbiter {
         this.arbiterDecisionEngine = new ArbiterDecisionEngine();
     }
 
-    public Boolean wasThisMoveVictorious(Board board) {
-        return arbiterDecisionEngine.isBoardContainsWinningSequence(board);
+    public Boolean wasThisMoveVictorious(BoardController boardController) {
+        return arbiterDecisionEngine.isBoardContainsWinningSequence(boardController);
     }
 
     public String announceWinner(String playerName, Sign sign) {

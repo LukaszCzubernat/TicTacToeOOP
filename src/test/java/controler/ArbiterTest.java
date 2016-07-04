@@ -1,12 +1,15 @@
 package controler;
 
 import controler.arbiter.impl.Arbiter;
+import controler.board.BoardController;
 import model.board.impl.Board;
+import model.field.Field;
 import model.field.Sign;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 
 import static model.field.Sign.O;
+import static model.field.Sign.X;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -16,30 +19,31 @@ import static org.junit.Assert.assertTrue;
 public class ArbiterTest {
 
     private Arbiter arbiter;
-    private Board board;
+    private BoardController boardController;
 
     @BeforeGroups(groups = {"arbiter"})
     public void init() {
-//        board = new Board(new Field[9]);
-//        board.placeSignOnField(new Field(0, O));
-//        board.placeSignOnField(new Field(4, O));
-//        board.placeSignOnField(new Field(8, O));
-//        board.placeSignOnField(new Field(1, X));
+        Field[] fields = new Field[9];
+        fields[0] = new Field(0, O);
+        fields[4] = new Field(4, O);
+        fields[8] = new Field(8, O);
+        fields[1] = new Field(1, X);
 
+        boardController = new BoardController(new Board(fields));
         arbiter = new Arbiter();
     }
 
-//    @Test(groups = "arbiter")
-//    public void wasThisMoveVictorious() {
-//        // given
-//        Field field = new Field(8, O);
-//
-//        // when
-//        board.placeSignOnField(field);
-//
-//        // then
-//        assertTrue(arbiter.wasThisMoveVictorious(board));
-//    }
+    @Test(groups = "arbiter")
+    public void wasThisMoveVictorious() {
+        // given
+        Field field = new Field(8, O);
+
+        // when
+        boardController.placeSignOnBoard(field);
+
+        // then
+        assertTrue(arbiter.wasThisMoveVictorious(boardController));
+    }
 
     @Test(groups = "arbiter", dependsOnMethods = {"wasThisMoveVictorious"})
     public void announceWinner() {

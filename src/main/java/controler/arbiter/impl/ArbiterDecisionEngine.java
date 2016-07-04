@@ -1,14 +1,13 @@
 package controler.arbiter.impl;
 
-import model.board.impl.Board;
+import controler.board.BoardController;
 import model.field.Sign;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.ListUtils;
 import util.Sequence;
 import util.SequenceInitializer;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by lucz on 30.06.16.
@@ -16,28 +15,30 @@ import java.util.Set;
 public class ArbiterDecisionEngine {
 
     private Set<Sequence> possibleWinningSequences;
-    private Sequence winnerSequence;
-    private Sign winnerSign;
 
     public ArbiterDecisionEngine() {
         this.possibleWinningSequences = SequenceInitializer.getAllWinningSequences();
     }
 
-    public Boolean isBoardContainsWinningSequence(Board board) {
-//        Iterator<Sequence> sequenceIterator = possibleWinningSequences.iterator();
-//        while (sequenceIterator.hasNext()) {
-//            if (isWinningSequence(board.getValuesForSequence(sequenceIterator.next()))){
-//                return Boolean.TRUE;
-//            }
-//        }
+    public Boolean isBoardContainsWinningSequence(BoardController boardController) {
+        // ME: REFACTOR MY FRIEND, WHERE ARE YOU?
+        // REFACTOR: STFU! I DON'T KNOW HOW TO DO MY JOB
+        Iterator<Sequence> sequenceIterator = possibleWinningSequences.iterator();
+        while (sequenceIterator.hasNext()) {
+            if (isWinningSequence(boardController.getValuesForSequence(sequenceIterator.next()))) {
+                return Boolean.TRUE;
+            }
+        }
         return Boolean.FALSE;
     }
 
-    public void updateWinningSequences(Board board) {
-//        Iterator<Sequence> sequenceIterator = possibleWinningSequences.iterator();
-//        while (sequenceIterator.hasNext()) {
-//            updatePossibleWinningSequences(board.getValuesForSequence(sequenceIterator.next()), sequenceIterator);
-//        }
+    public void updateWinningSequences(BoardController boardController) {
+        // ME: REFACTOR MY FRIEND, WHERE ARE YOU?
+        // REFACTOR: STFU! I DON'T KNOW HOW TO DO MY JOB
+        Iterator<Sequence> sequenceIterator = possibleWinningSequences.iterator();
+        while (sequenceIterator.hasNext()) {
+            updatePossibleWinningSequences(boardController.getValuesForSequence(sequenceIterator.next()), sequenceIterator);
+        }
     }
 
     private boolean isWinningSequence(List<Sign> signs) {
@@ -47,7 +48,9 @@ public class ArbiterDecisionEngine {
         if (signs.size() == 3 && !signs.contains(Sign.O)) {
             return signs.stream().filter(sign -> Objects.nonNull(sign)).filter(sign -> sign.equals(Sign.X)).count() == 3;
         }
+
         return false;
+
     }
 
     private void updatePossibleWinningSequences(List<Sign> signs, Iterator<Sequence> sequenceIterator) {

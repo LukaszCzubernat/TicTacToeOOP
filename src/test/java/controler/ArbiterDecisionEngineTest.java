@@ -1,7 +1,10 @@
 package controler;
 
+import controler.arbiter.impl.ArbiterDecisionEngine;
+import controler.board.BoardController;
 import model.board.impl.Board;
 import model.field.Field;
+import org.apache.commons.collections.SetUtils;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 import util.Sequence;
@@ -19,9 +22,8 @@ import static org.testng.Assert.assertTrue;
 public class ArbiterDecisionEngineTest {
 
     private Set<Sequence> expectedWinningSequences;
-    private Board board;
+    private BoardController boardController;
 
-    @BeforeGroups(groups = { "arbiterHelperUpdateSequences" })
     public void initSequences(){
         expectedWinningSequences = SequenceInitializer.getAllWinningSequences();
         expectedWinningSequences.remove(new Sequence(0, 1));
@@ -32,20 +34,22 @@ public class ArbiterDecisionEngineTest {
         Field[] fields = new Field[9];
         fields[0] = new Field(0, O);
         fields[1] = new Field(1, X);
-        board = new Board(fields);
+        Board board = new Board(fields);
+        boardController = new BoardController(board);
+        initSequences();
     }
 
 
     @Test(groups = "arbiterHelperUpdateSequences")
     public void updateWinningSequences(){
-//        // given
-//        ArbiterDecisionEngine arbiterDecisionEngine = new ArbiterDecisionEngine();
-//
-//        // when
-//        arbiterDecisionEngine.updateWinningSequences(board);
-//
-//        // then
-//        assertTrue(SetUtils.isEqualSet(arbiterDecisionEngine.getPossibleWinningSequences(), expectedWinningSequences));
+        // given
+        ArbiterDecisionEngine arbiterDecisionEngine = new ArbiterDecisionEngine();
+
+        // when
+        arbiterDecisionEngine.updateWinningSequences(boardController);
+
+        // then
+        assertTrue(SetUtils.isEqualSet(arbiterDecisionEngine.getPossibleWinningSequences(), expectedWinningSequences));
     }
 
     @BeforeGroups(groups = { "arbiterHelperWinningSequence" })
@@ -57,20 +61,21 @@ public class ArbiterDecisionEngineTest {
         fields[4] = new Field(4, O);
         fields[8] = new Field(8, O);
 
-        // additional "X" sings on most left vertical column
+        // additional "X" sings on most left column
         fields[1] = new Field(3, X);
         fields[2] = new Field(6, X);
 
-        board = new Board(fields);
+        Board board = new Board(fields);
+        boardController = new BoardController(board);
     }
 
     @Test(groups = "arbiterHelperWinningSequence")
     public void isBoardContainsWinningSequence(){
-//        // given
-//        ArbiterDecisionEngine arbiterDecisionEngine = new ArbiterDecisionEngine();
-//
-//        // when - then
-//        assertTrue(arbiterDecisionEngine.isBoardContainsWinningSequence(board));
+        // given
+        ArbiterDecisionEngine arbiterDecisionEngine = new ArbiterDecisionEngine();
+
+        // when - then
+        assertTrue(arbiterDecisionEngine.isBoardContainsWinningSequence(boardController));
     }
 
 }

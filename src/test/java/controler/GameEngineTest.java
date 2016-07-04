@@ -23,7 +23,7 @@ public class GameEngineTest {
     }
 
     @Test(groups = "gameEngine")
-    public void placeXOXOOnOccupiedFieldsOnBoard() {
+    public void placeXOXOnNonOccupiedFieldsOnBoard() {
         // given
         Field firstXField = new Field(0, X);
         Field secondOField = new Field(1, O);
@@ -35,17 +35,17 @@ public class GameEngineTest {
         assertTrue(gameEngine.placeOnBoard(thirdXField));
     }
 
-    @Test(groups = "gameEngine")
-    public void placeXOXOOnNonOccupiedFieldsOnBoard() {
+    @Test(groups = "gameEngine", dependsOnMethods = { "placeXOXOnNonOccupiedFieldsOnBoard" })
+    public void placeOXOOnOccupiedFieldsOnBoard() {
         // given
-        Field firstXField = new Field(0, X);
-        Field secondOField = new Field(1, O);
-        Field thirdXField = new Field(2, X);
+        Field firstOField = new Field(0, O);
+        Field secondXField = new Field(1, X);
+        Field thirdOField = new Field(2, O);
 
         // when - then
-        assertFalse(gameEngine.placeOnBoard(firstXField));
-        assertFalse(gameEngine.placeOnBoard(secondOField));
-        assertFalse(gameEngine.placeOnBoard(thirdXField));
+        assertFalse(gameEngine.placeOnBoard(firstOField));
+        assertFalse(gameEngine.placeOnBoard(secondXField));
+        assertFalse(gameEngine.placeOnBoard(thirdOField));
     }
 
 
