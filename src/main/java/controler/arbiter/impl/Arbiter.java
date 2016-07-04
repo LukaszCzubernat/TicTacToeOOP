@@ -1,7 +1,7 @@
 package controler.arbiter.impl;
 
 import controler.arbiter.GameArbiter;
-import controler.board.BoardController;
+import controler.board.GameBoardController;
 import model.field.Sign;
 
 /**
@@ -15,10 +15,11 @@ public class Arbiter implements GameArbiter {
         this.arbiterDecisionEngine = new ArbiterDecisionEngine();
     }
 
-    public Boolean wasThisMoveVictorious(BoardController boardController) {
+    public Boolean wasThisMoveVictorious(GameBoardController boardController) {
         return arbiterDecisionEngine.isBoardContainsWinningSequence(boardController);
     }
 
+    @Override
     public String announceWinner(String playerName, Sign sign) {
         return new StringBuilder().append(playerName).append(" (").append(sign.toString()).append(")").append(" in a winner").toString();
     }

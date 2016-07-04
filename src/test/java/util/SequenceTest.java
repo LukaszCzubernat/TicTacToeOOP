@@ -3,6 +3,7 @@ package util;
 import org.apache.commons.collections.SetUtils;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
+import util.impl.WinSequence;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -20,7 +21,7 @@ public class SequenceTest {
 
     @BeforeGroups(groups = "sequence")
     public void init(){
-        sequence = new Sequence(0, 4);
+        sequence = new WinSequence(0, 4);
     }
 
     @Test(groups = "sequence")

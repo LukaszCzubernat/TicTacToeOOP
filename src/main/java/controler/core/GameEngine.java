@@ -1,8 +1,7 @@
 package controler.core;
 
-import controler.board.BoardController;
+import controler.board.impl.BoardController;
 import model.board.impl.BoardBuilder;
-import model.field.Field;
 import model.field.GameField;
 
 /**

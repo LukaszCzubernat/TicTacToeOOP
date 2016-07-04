@@ -1,13 +1,14 @@
 package controler.arbiter.impl;
 
-import controler.board.BoardController;
+import controler.board.GameBoardController;
 import model.field.Sign;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.ListUtils;
 import util.Sequence;
-import util.SequenceInitializer;
+import util.impl.SequenceInitializer;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * Created by lucz on 30.06.16.
@@ -20,8 +21,8 @@ public class ArbiterDecisionEngine {
         this.possibleWinningSequences = SequenceInitializer.getAllWinningSequences();
     }
 
-    public Boolean isBoardContainsWinningSequence(BoardController boardController) {
-        // ME: REFACTOR MY FRIEND, WHERE ARE YOU?
+    public Boolean isBoardContainsWinningSequence(GameBoardController boardController) {
+        // ME: REFACTOR MY FRIEND, WHERE ARE YOU? CAN YOU HELP ME? REFACTOR WHY ARE YOU SO SILENT?
         // REFACTOR: STFU! I DON'T KNOW HOW TO DO MY JOB
         Iterator<Sequence> sequenceIterator = possibleWinningSequences.iterator();
         while (sequenceIterator.hasNext()) {
@@ -32,8 +33,8 @@ public class ArbiterDecisionEngine {
         return Boolean.FALSE;
     }
 
-    public void updateWinningSequences(BoardController boardController) {
-        // ME: REFACTOR MY FRIEND, WHERE ARE YOU?
+    public void updateWinningSequences(GameBoardController boardController) {
+        // ME: REFACTOR MY FRIEND, WHERE ARE YOU? CAN YOU HELP ME? REFACTOR WHY ARE YOU SO SILENT?
         // REFACTOR: STFU! I DON'T KNOW HOW TO DO MY JOB
         Iterator<Sequence> sequenceIterator = possibleWinningSequences.iterator();
         while (sequenceIterator.hasNext()) {

@@ -1,7 +1,8 @@
 package controler;
 
 import controler.arbiter.impl.Arbiter;
-import controler.board.BoardController;
+import controler.board.impl.BoardController;
+import controler.board.GameBoardController;
 import model.board.impl.Board;
 import model.field.Field;
 import model.field.Sign;
@@ -19,7 +20,7 @@ import static org.junit.Assert.assertTrue;
 public class ArbiterTest {
 
     private Arbiter arbiter;
-    private BoardController boardController;
+    private GameBoardController boardController;
 
     @BeforeGroups(groups = {"arbiter"})
     public void init() {

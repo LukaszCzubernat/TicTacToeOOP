@@ -1,7 +1,8 @@
-package controler.board;
+package controler.board.impl;
 
 import controler.arbiter.GameArbiter;
 import controler.arbiter.impl.Arbiter;
+import controler.board.GameBoardController;
 import model.board.GameBoard;
 import model.field.GameField;
 import model.field.Sign;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 /**
  * Created by lucz on 01.07.16.
  */
-public class BoardController {
+public class BoardController implements GameBoardController {
 
     private GameBoard board;
     private GameArbiter gameArbiter;
@@ -24,16 +25,23 @@ public class BoardController {
         this.gameArbiter = new Arbiter();
     }
 
+    @Override
     public List<Sign> getValuesForSequence(Sequence sequence) {
         return sequence.showSequenceValues().stream().filter(index -> Objects.nonNull(board.getSignOfFieldForIndex(index))).
                 map(index -> board.getSignOfFieldForIndex(index)).collect(Collectors.toList());
     }
 
+    @Override
     public Boolean placeSignOnBoard(GameField field) {
         if (Objects.isNull(board.getFieldForIndex(field.showIndex()))) {
             board.fillFieldOnBoard(field);
             return Boolean.TRUE;
         }
         return Boolean.FALSE;
+    }
+
+    @Override
+    public String displayBoard(){
+        return board.display();
     }
 }

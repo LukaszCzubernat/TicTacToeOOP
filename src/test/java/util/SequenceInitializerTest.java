@@ -1,6 +1,7 @@
 package util;
 
 import org.testng.annotations.Test;
+import util.impl.SequenceInitializer;
 
 import java.util.Set;
 

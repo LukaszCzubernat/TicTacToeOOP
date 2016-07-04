@@ -1,6 +1,6 @@
 package controler;
 
-import controler.board.BoardController;
+import controler.board.impl.BoardController;
 import model.board.GameBoard;
 import model.board.impl.Board;
 import model.board.impl.BoardBuilder;
@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import util.Sequence;
+import util.impl.WinSequence;
 
 import java.util.Arrays;
 import java.util.List;
@@ -84,8 +85,8 @@ public class BoardControllerTest {
         fields[2] = new Field(2, X);
         Board board = new Board(fields);
         return new Object[][]{
-                { new BoardController(board), new Sequence(0, 4), Arrays.asList(O, O, O) },
-                { new BoardController(board), new Sequence(0, 1), Arrays.asList(O, X, X) }
+                { new BoardController(board), new WinSequence(0, 4), Arrays.asList(O, O, O) },
+                { new BoardController(board), new WinSequence(0, 1), Arrays.asList(O, X, X) }
         };
     }
 

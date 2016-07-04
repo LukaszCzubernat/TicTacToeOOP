@@ -1,14 +1,16 @@
 package controler;
 
 import controler.arbiter.impl.ArbiterDecisionEngine;
-import controler.board.BoardController;
+import controler.board.impl.BoardController;
+import controler.board.GameBoardController;
 import model.board.impl.Board;
 import model.field.Field;
 import org.apache.commons.collections.SetUtils;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 import util.Sequence;
-import util.SequenceInitializer;
+import util.impl.SequenceInitializer;
+import util.impl.WinSequence;
 
 import java.util.Set;
 
@@ -22,11 +24,11 @@ import static org.testng.Assert.assertTrue;
 public class ArbiterDecisionEngineTest {
 
     private Set<Sequence> expectedWinningSequences;
-    private BoardController boardController;
+    private GameBoardController boardController;
 
     public void initSequences(){
         expectedWinningSequences = SequenceInitializer.getAllWinningSequences();
-        expectedWinningSequences.remove(new Sequence(0, 1));
+        expectedWinningSequences.remove(new WinSequence(0, 1));
     }
 
     @BeforeGroups(groups = { "arbiterHelperUpdateSequences" })

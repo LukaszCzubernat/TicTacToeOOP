@@ -38,6 +38,16 @@ public class Board implements GameBoard {
 
     @Override
     public String display() {
-        return null;
+        StringBuilder builder = new StringBuilder();
+        for (int i = 1; i <= fields.length; i++) {
+            Field field = fields[i - 1];
+            if (Objects.isNull(field))
+                builder.append("_ | ");
+            else
+                builder.append(field.showSign().toString().concat(" | "));
+            if (i % 3 == 0)
+                builder.append("\n");
+        }
+        return builder.toString();
     }
 }
