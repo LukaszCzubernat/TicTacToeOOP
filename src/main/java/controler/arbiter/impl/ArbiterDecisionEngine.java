@@ -1,7 +1,7 @@
 package controler.arbiter.impl;
 
 import controler.board.GameBoardController;
-import model.field.Sign;
+import model.field.impl.Sign;
 import util.Sequence;
 import util.impl.SequenceInitializer;
 

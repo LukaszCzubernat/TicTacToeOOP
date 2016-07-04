@@ -1,6 +1,6 @@
 package controler.arbiter;
 
-import model.field.Sign;
+import model.field.impl.Sign;
 
 /**
  * Created by lucz on 01.07.16.

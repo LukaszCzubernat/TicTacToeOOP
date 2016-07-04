@@ -1,5 +1,6 @@
 package controler.core;
 
+import controler.board.GameBoardController;
 import controler.board.impl.BoardController;
 import model.board.impl.BoardBuilder;
 import model.field.GameField;
@@ -9,7 +10,7 @@ import model.field.GameField;
  */
 public class GameEngine {
 
-    private BoardController boardController;
+    private GameBoardController boardController;
 
     public GameEngine() {
         this.boardController = new BoardController(new BoardBuilder(9).createEmptyBoard());

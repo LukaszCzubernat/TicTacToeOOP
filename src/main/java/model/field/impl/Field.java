@@ -1,22 +1,27 @@
-package model.field;
+package model.field.impl;
+
+import model.field.GameField;
 
 import java.util.Objects;
 
 /**
  * Created by lucz on 28.06.16.
  */
-public class Field extends GameField{
+public class Field implements GameField {
     private Sign sign;
+    private Integer index;
 
     public Field(Integer index, Sign sign) {
         this.index = index;
         this.sign = sign;
     }
 
+    @Override
     public Integer showIndex() {
         return index;
     }
 
+    @Override
     public Sign showSign() {
         return sign;
     }

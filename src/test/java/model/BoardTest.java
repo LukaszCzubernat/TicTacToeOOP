@@ -1,15 +1,14 @@
 package model;
 
 import model.board.impl.Board;
-import model.field.Field;
-import model.field.Sign;
+import model.field.impl.Field;
+import model.field.impl.Sign;
 import org.junit.Assert;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
-import org.testng.internal.junit.ArrayAsserts;
 
-import static model.field.Sign.O;
-import static model.field.Sign.X;
+import static model.field.impl.Sign.O;
+import static model.field.impl.Sign.X;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;

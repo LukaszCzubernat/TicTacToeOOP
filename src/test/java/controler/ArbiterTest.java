@@ -3,14 +3,16 @@ package controler;
 import controler.arbiter.impl.Arbiter;
 import controler.board.impl.BoardController;
 import controler.board.GameBoardController;
+import model.board.GameBoard;
 import model.board.impl.Board;
-import model.field.Field;
-import model.field.Sign;
+import model.field.GameField;
+import model.field.impl.Field;
+import model.field.impl.Sign;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 
-import static model.field.Sign.O;
-import static model.field.Sign.X;
+import static model.field.impl.Sign.O;
+import static model.field.impl.Sign.X;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -24,7 +26,7 @@ public class ArbiterTest {
 
     @BeforeGroups(groups = {"arbiter"})
     public void init() {
-        Field[] fields = new Field[9];
+        GameField[] fields = new Field[9];
         fields[0] = new Field(0, O);
         fields[4] = new Field(4, O);
         fields[8] = new Field(8, O);
@@ -37,7 +39,7 @@ public class ArbiterTest {
     @Test(groups = "arbiter")
     public void wasThisMoveVictorious() {
         // given
-        Field field = new Field(8, O);
+        GameField field = new Field(8, O);
 
         // when
         boardController.placeSignOnBoard(field);

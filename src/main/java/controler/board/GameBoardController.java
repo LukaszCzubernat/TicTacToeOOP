@@ -1,7 +1,7 @@
 package controler.board;
 
 import model.field.GameField;
-import model.field.Sign;
+import model.field.impl.Sign;
 import util.Sequence;
 
 import java.util.List;

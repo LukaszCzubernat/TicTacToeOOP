@@ -2,7 +2,7 @@ package model.board.impl;
 
 import model.board.GameBoard;
 import model.board.GameBoardBuilder;
-import model.field.Field;
+import model.field.impl.Field;
 
 /**
  * Created by lucz on 29.06.16.

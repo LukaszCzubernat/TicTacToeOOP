@@ -3,8 +3,10 @@ package controler;
 import controler.arbiter.impl.ArbiterDecisionEngine;
 import controler.board.impl.BoardController;
 import controler.board.GameBoardController;
+import model.board.GameBoard;
 import model.board.impl.Board;
-import model.field.Field;
+import model.field.GameField;
+import model.field.impl.Field;
 import org.apache.commons.collections.SetUtils;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
@@ -14,8 +16,8 @@ import util.impl.WinSequence;
 
 import java.util.Set;
 
-import static model.field.Sign.O;
-import static model.field.Sign.X;
+import static model.field.impl.Sign.O;
+import static model.field.impl.Sign.X;
 import static org.testng.Assert.assertTrue;
 
 /**
@@ -33,10 +35,10 @@ public class ArbiterDecisionEngineTest {
 
     @BeforeGroups(groups = { "arbiterHelperUpdateSequences" })
     public void initFilledBoardWithConflictedSequences(){
-        Field[] fields = new Field[9];
+        GameField[] fields = new Field[9];
         fields[0] = new Field(0, O);
         fields[1] = new Field(1, X);
-        Board board = new Board(fields);
+        GameBoard board = new Board(fields);
         boardController = new BoardController(board);
         initSequences();
     }
@@ -56,7 +58,7 @@ public class ArbiterDecisionEngineTest {
 
     @BeforeGroups(groups = { "arbiterHelperWinningSequence" })
     public void initFilledBoardWithWinningSequence(){
-        Field[] fields = new Field[9];
+        GameField[] fields = new Field[9];
 
         // 3 "O" sings on diagonal
         fields[0] = new Field(0, O);
@@ -67,7 +69,7 @@ public class ArbiterDecisionEngineTest {
         fields[1] = new Field(3, X);
         fields[2] = new Field(6, X);
 
-        Board board = new Board(fields);
+        GameBoard board = new Board(fields);
         boardController = new BoardController(board);
     }
 

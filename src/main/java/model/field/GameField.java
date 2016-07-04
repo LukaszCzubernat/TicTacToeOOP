@@ -1,12 +1,11 @@
 package model.field;
 
+import model.field.impl.Sign;
+
 /**
  * Created by lucz on 01.07.16.
  */
-public abstract class GameField {
-    protected Integer index;
-
-    public Integer showIndex() {
-        return index;
-    }
+public interface GameField {
+    Integer showIndex();
+    Sign showSign();
 }

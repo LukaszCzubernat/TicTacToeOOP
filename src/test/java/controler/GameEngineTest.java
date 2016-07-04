@@ -1,12 +1,12 @@
 package controler;
 
 import controler.core.GameEngine;
-import model.field.Field;
+import model.field.impl.Field;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 
-import static model.field.Sign.O;
-import static model.field.Sign.X;
+import static model.field.impl.Sign.O;
+import static model.field.impl.Sign.X;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 

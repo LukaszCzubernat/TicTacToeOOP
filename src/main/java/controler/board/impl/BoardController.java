@@ -5,7 +5,7 @@ import controler.arbiter.impl.Arbiter;
 import controler.board.GameBoardController;
 import model.board.GameBoard;
 import model.field.GameField;
-import model.field.Sign;
+import model.field.impl.Sign;
 import util.Sequence;
 
 import java.util.List;

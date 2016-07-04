@@ -1,8 +1,10 @@
 package model;
 
+import model.board.GameBoard;
+import model.board.GameBoardBuilder;
 import model.board.impl.Board;
 import model.board.impl.BoardBuilder;
-import model.field.Field;
+import model.field.impl.Field;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,8 +16,8 @@ public class BoardBuilderTest {
     @Test
     public void createBoard(){
         // given
-        BoardBuilder boardBuilder = new BoardBuilder(9);
-        Board board = new Board(new Field[9]);
+        GameBoardBuilder boardBuilder = new BoardBuilder(9);
+        GameBoard board = new Board(new Field[9]);
 
         // when - then
         Assert.assertNotSame(boardBuilder.createEmptyBoard(), board);

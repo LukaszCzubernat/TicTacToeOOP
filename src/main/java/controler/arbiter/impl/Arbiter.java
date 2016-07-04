@@ -2,7 +2,7 @@ package controler.arbiter.impl;
 
 import controler.arbiter.GameArbiter;
 import controler.board.GameBoardController;
-import model.field.Sign;
+import model.field.impl.Sign;
 
 /**
  * Created by lucz on 29.06.16.
